@@ -1,0 +1,6 @@
+framework module Pods_PopularMusic {
+  umbrella header "Pods-PopularMusic-umbrella.h"
+
+  export *
+  module * { export * }
+}

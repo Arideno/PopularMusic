@@ -3,29 +3,43 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		313D60C3260E3C9F00FFD49C /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D60C2260E3C9F00FFD49C /* BaseCoordinator.swift */; };
+		318FBF6C260E3D460040658B /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318FBF6B260E3D460040658B /* BaseViewModel.swift */; };
+		318FBF6F260E3DB20040658B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318FBF6E260E3DB20040658B /* AppCoordinator.swift */; };
+		318FBF74260E3E250040658B /* AfterSplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318FBF73260E3E250040658B /* AfterSplashCoordinator.swift */; };
+		318FBF78260E3E330040658B /* AfterSplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318FBF77260E3E330040658B /* AfterSplashViewModel.swift */; };
+		318FBF7B260E3E390040658B /* AfterSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318FBF7A260E3E390040658B /* AfterSplashViewController.swift */; };
 		31DBF8D6260E3B5400759B31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8D5260E3B5400759B31 /* AppDelegate.swift */; };
 		31DBF8D8260E3B5400759B31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8D7260E3B5400759B31 /* SceneDelegate.swift */; };
 		31DBF8DA260E3B5400759B31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8D9260E3B5400759B31 /* ViewController.swift */; };
-		31DBF8DD260E3B5400759B31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DBF8DB260E3B5400759B31 /* Main.storyboard */; };
 		31DBF8E0260E3B5400759B31 /* PopularMusic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8DE260E3B5400759B31 /* PopularMusic.xcdatamodeld */; };
 		31DBF8E2260E3B5900759B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31DBF8E1260E3B5900759B31 /* Assets.xcassets */; };
 		31DBF8E5260E3B5900759B31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DBF8E3260E3B5900759B31 /* LaunchScreen.storyboard */; };
+		78321A0910F82D542407B1B4 /* Pods_PopularMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519A77F11458B05AE251A6C9 /* Pods_PopularMusic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2113B040250317D8B7D382F2 /* Pods-PopularMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopularMusic.debug.xcconfig"; path = "Target Support Files/Pods-PopularMusic/Pods-PopularMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		313D60C2260E3C9F00FFD49C /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		318FBF6B260E3D460040658B /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		318FBF6E260E3DB20040658B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		318FBF73260E3E250040658B /* AfterSplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterSplashCoordinator.swift; sourceTree = "<group>"; };
+		318FBF77260E3E330040658B /* AfterSplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterSplashViewModel.swift; sourceTree = "<group>"; };
+		318FBF7A260E3E390040658B /* AfterSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterSplashViewController.swift; sourceTree = "<group>"; };
 		31DBF8D2260E3B5400759B31 /* PopularMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DBF8D5260E3B5400759B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31DBF8D7260E3B5400759B31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		31DBF8D9260E3B5400759B31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		31DBF8DC260E3B5400759B31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		31DBF8DF260E3B5400759B31 /* PopularMusic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PopularMusic.xcdatamodel; sourceTree = "<group>"; };
 		31DBF8E1260E3B5900759B31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31DBF8E4260E3B5900759B31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31DBF8E6260E3B5900759B31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		519A77F11458B05AE251A6C9 /* Pods_PopularMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopularMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA32D8C36EA810590141DF7C /* Pods-PopularMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopularMusic.release.xcconfig"; path = "Target Support Files/Pods-PopularMusic/Pods-PopularMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +47,56 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78321A0910F82D542407B1B4 /* Pods_PopularMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25327FA4EEA06BE93C1179B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2113B040250317D8B7D382F2 /* Pods-PopularMusic.debug.xcconfig */,
+				CA32D8C36EA810590141DF7C /* Pods-PopularMusic.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		313D60C1260E3C8B00FFD49C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				313D60C2260E3C9F00FFD49C /* BaseCoordinator.swift */,
+				318FBF6B260E3D460040658B /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		318FBF71260E3E110040658B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				318FBF72260E3E190040658B /* AfterSplash */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		318FBF72260E3E190040658B /* AfterSplash */ = {
+			isa = PBXGroup;
+			children = (
+				318FBF73260E3E250040658B /* AfterSplashCoordinator.swift */,
+				318FBF77260E3E330040658B /* AfterSplashViewModel.swift */,
+				318FBF7A260E3E390040658B /* AfterSplashViewController.swift */,
+			);
+			path = AfterSplash;
+			sourceTree = "<group>";
+		};
 		31DBF8C9260E3B5400759B31 = {
 			isa = PBXGroup;
 			children = (
 				31DBF8D4260E3B5400759B31 /* PopularMusic */,
 				31DBF8D3260E3B5400759B31 /* Products */,
+				25327FA4EEA06BE93C1179B3 /* Pods */,
+				9414AF6007D5AFE7A4832B5A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +111,26 @@
 		31DBF8D4260E3B5400759B31 /* PopularMusic */ = {
 			isa = PBXGroup;
 			children = (
+				318FBF71260E3E110040658B /* Scenes */,
+				313D60C1260E3C8B00FFD49C /* Base */,
 				31DBF8D5260E3B5400759B31 /* AppDelegate.swift */,
 				31DBF8D7260E3B5400759B31 /* SceneDelegate.swift */,
 				31DBF8D9260E3B5400759B31 /* ViewController.swift */,
-				31DBF8DB260E3B5400759B31 /* Main.storyboard */,
 				31DBF8E1260E3B5900759B31 /* Assets.xcassets */,
 				31DBF8E3260E3B5900759B31 /* LaunchScreen.storyboard */,
 				31DBF8E6260E3B5900759B31 /* Info.plist */,
 				31DBF8DE260E3B5400759B31 /* PopularMusic.xcdatamodeld */,
+				318FBF6E260E3DB20040658B /* AppCoordinator.swift */,
 			);
 			path = PopularMusic;
+			sourceTree = "<group>";
+		};
+		9414AF6007D5AFE7A4832B5A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				519A77F11458B05AE251A6C9 /* Pods_PopularMusic.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31DBF8E9260E3B5900759B31 /* Build configuration list for PBXNativeTarget "PopularMusic" */;
 			buildPhases = (
+				61641EF62E666CC51C442731 /* [CP] Check Pods Manifest.lock */,
 				31DBF8CE260E3B5400759B31 /* Sources */,
 				31DBF8CF260E3B5400759B31 /* Frameworks */,
 				31DBF8D0260E3B5400759B31 /* Resources */,
+				8211628DD901B1DD246354A7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,35 +194,74 @@
 			files = (
 				31DBF8E5260E3B5900759B31 /* LaunchScreen.storyboard in Resources */,
 				31DBF8E2260E3B5900759B31 /* Assets.xcassets in Resources */,
-				31DBF8DD260E3B5400759B31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61641EF62E666CC51C442731 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PopularMusic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8211628DD901B1DD246354A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PopularMusic/Pods-PopularMusic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PopularMusic/Pods-PopularMusic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopularMusic/Pods-PopularMusic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		31DBF8CE260E3B5400759B31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				318FBF7B260E3E390040658B /* AfterSplashViewController.swift in Sources */,
+				318FBF74260E3E250040658B /* AfterSplashCoordinator.swift in Sources */,
+				313D60C3260E3C9F00FFD49C /* BaseCoordinator.swift in Sources */,
 				31DBF8DA260E3B5400759B31 /* ViewController.swift in Sources */,
 				31DBF8E0260E3B5400759B31 /* PopularMusic.xcdatamodeld in Sources */,
 				31DBF8D6260E3B5400759B31 /* AppDelegate.swift in Sources */,
+				318FBF78260E3E330040658B /* AfterSplashViewModel.swift in Sources */,
 				31DBF8D8260E3B5400759B31 /* SceneDelegate.swift in Sources */,
+				318FBF6C260E3D460040658B /* BaseViewModel.swift in Sources */,
+				318FBF6F260E3DB20040658B /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		31DBF8DB260E3B5400759B31 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				31DBF8DC260E3B5400759B31 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		31DBF8E3260E3B5900759B31 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,6 +391,7 @@
 		};
 		31DBF8EA260E3B5900759B31 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2113B040250317D8B7D382F2 /* Pods-PopularMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +411,7 @@
 		};
 		31DBF8EB260E3B5900759B31 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA32D8C36EA810590141DF7C /* Pods-PopularMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
