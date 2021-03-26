@@ -10,4 +10,6 @@ target 'PopularMusic' do
   pod 'RxCocoa'
   pod 'RxAlamofire'
   pod 'Alamofire'
+  pod 'SnapKit'
+  pod 'RxDataSources'
 end

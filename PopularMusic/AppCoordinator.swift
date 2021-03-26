@@ -16,8 +16,8 @@ class AppCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        let afterSplashCoordinator = AfterSplashCoordinator(window: window)
-        return coordinate(to: afterSplashCoordinator)
+        let popularArtistsCoordinator = PopularArtistsCoordinator(window: window)
+        return coordinate(to: popularArtistsCoordinator)
     }
     
 }
