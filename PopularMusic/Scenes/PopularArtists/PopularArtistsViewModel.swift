@@ -17,20 +17,27 @@ protocol PopularArtistsViewModelType: class {
 class PopularArtistsViewModel: BaseViewModel, PopularArtistsViewModelType {
     var input: Input!
     var output: Output!
+    var coordinatorInput: CoordinatorInput!
     
     private let cellsRelay = BehaviorRelay<[PopularArtistsSection]>(value: [])
     private let requestCellsSubject = PublishSubject<Void>()
     private let selectCountrySubject = BehaviorRelay<String?>(value: nil)
     private let startLoadingSubject = PublishSubject<Void>()
+    private let goToArtistInfoSubject = PublishSubject<Artist>()
     
     struct Input {
         var requestCells: AnyObserver<Void>
         var selectCountry: BehaviorRelay<String?>
+        var goToArtistInfo: AnyObserver<Artist>
     }
     
     struct Output {
         var artists: Observable<[PopularArtistsSection]>
         var startLoading: Observable<Void>
+    }
+    
+    struct CoordinatorInput {
+        var goToArtistInfo: Observable<Artist>
     }
     
     override init(coordinator: BaseCoordinatorType) {
@@ -41,8 +48,9 @@ class PopularArtistsViewModel: BaseViewModel, PopularArtistsViewModelType {
     }
     
     private func setupIO() {
-        input = Input(requestCells: requestCellsSubject.asObserver(), selectCountry: selectCountrySubject)
+        input = Input(requestCells: requestCellsSubject.asObserver(), selectCountry: selectCountrySubject, goToArtistInfo: goToArtistInfoSubject.asObserver())
         output = Output(artists: cellsRelay.asObservable(), startLoading: startLoadingSubject)
+        coordinatorInput = CoordinatorInput(goToArtistInfo: goToArtistInfoSubject)
     }
     
     private func setupSubjects() {

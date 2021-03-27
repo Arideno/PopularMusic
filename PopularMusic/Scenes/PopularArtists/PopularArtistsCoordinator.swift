@@ -23,6 +23,14 @@ class PopularArtistsCoordinator: BaseCoordinator<Void> {
         window.rootViewController = UINavigationController(rootViewController: viewController)
         window.makeKeyAndVisible()
         
+        viewModel.coordinatorInput.goToArtistInfo
+            .flatMap({ [weak self, weak viewController] artist -> Observable<Void> in
+                guard let self = self, let viewController = viewController else { return .just(()) }
+                return self.coordinate(to: ArtistInfoCoordinator(presentingViewController: viewController, artist: artist))
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
+        
         return .never()
     }
 }

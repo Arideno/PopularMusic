@@ -19,6 +19,9 @@
 		31950186260E77CE00EBA850 /* PopularArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31950185260E77CE00EBA850 /* PopularArtistTableViewCell.swift */; };
 		31950189260E77D800EBA850 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31950188260E77D800EBA850 /* ReuseIdentifiable.swift */; };
 		3195018D260E7AB300EBA850 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3195018C260E7AB300EBA850 /* NetworkingService.swift */; };
+		3195019E260F4A5900EBA850 /* ArtistInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3195019D260F4A5900EBA850 /* ArtistInfoViewController.swift */; };
+		319501A2260F4A5F00EBA850 /* ArtistInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319501A1260F4A5F00EBA850 /* ArtistInfoViewModel.swift */; };
+		319501A5260F4A6500EBA850 /* ArtistInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319501A4260F4A6500EBA850 /* ArtistInfoCoordinator.swift */; };
 		31DBF8D6260E3B5400759B31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8D5260E3B5400759B31 /* AppDelegate.swift */; };
 		31DBF8D8260E3B5400759B31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8D7260E3B5400759B31 /* SceneDelegate.swift */; };
 		31DBF8E0260E3B5400759B31 /* PopularMusic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8DE260E3B5400759B31 /* PopularMusic.xcdatamodeld */; };
@@ -41,6 +44,9 @@
 		31950185260E77CE00EBA850 /* PopularArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularArtistTableViewCell.swift; sourceTree = "<group>"; };
 		31950188260E77D800EBA850 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		3195018C260E7AB300EBA850 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		3195019D260F4A5900EBA850 /* ArtistInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewController.swift; sourceTree = "<group>"; };
+		319501A1260F4A5F00EBA850 /* ArtistInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewModel.swift; sourceTree = "<group>"; };
+		319501A4260F4A6500EBA850 /* ArtistInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoCoordinator.swift; sourceTree = "<group>"; };
 		31DBF8D2260E3B5400759B31 /* PopularMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DBF8D5260E3B5400759B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31DBF8D7260E3B5400759B31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 		318FBF71260E3E110040658B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3195019C260F4A4C00EBA850 /* ArtistInfo */,
 				318FBF72260E3E190040658B /* PopularArtists */,
 			);
 			path = Scenes;
@@ -126,6 +133,16 @@
 				3195018C260E7AB300EBA850 /* NetworkingService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		3195019C260F4A4C00EBA850 /* ArtistInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3195019D260F4A5900EBA850 /* ArtistInfoViewController.swift */,
+				319501A1260F4A5F00EBA850 /* ArtistInfoViewModel.swift */,
+				319501A4260F4A6500EBA850 /* ArtistInfoCoordinator.swift */,
+			);
+			path = ArtistInfo;
 			sourceTree = "<group>";
 		};
 		31DBF8C9260E3B5400759B31 = {
@@ -288,7 +305,9 @@
 				3195018D260E7AB300EBA850 /* NetworkingService.swift in Sources */,
 				318FBF7B260E3E390040658B /* PopularArtistsViewController.swift in Sources */,
 				318FBF74260E3E250040658B /* PopularArtistsCoordinator.swift in Sources */,
+				319501A5260F4A6500EBA850 /* ArtistInfoCoordinator.swift in Sources */,
 				31950166260E729B00EBA850 /* BaseViewController.swift in Sources */,
+				319501A2260F4A5F00EBA850 /* ArtistInfoViewModel.swift in Sources */,
 				31950186260E77CE00EBA850 /* PopularArtistTableViewCell.swift in Sources */,
 				313D60C3260E3C9F00FFD49C /* BaseCoordinator.swift in Sources */,
 				31DBF8E0260E3B5400759B31 /* PopularMusic.xcdatamodeld in Sources */,
@@ -296,6 +315,7 @@
 				31DBF8D6260E3B5400759B31 /* AppDelegate.swift in Sources */,
 				31950189260E77D800EBA850 /* ReuseIdentifiable.swift in Sources */,
 				318FBF78260E3E330040658B /* PopularArtistsViewModel.swift in Sources */,
+				3195019E260F4A5900EBA850 /* ArtistInfoViewController.swift in Sources */,
 				31DBF8D8260E3B5400759B31 /* SceneDelegate.swift in Sources */,
 				318FBF6C260E3D460040658B /* BaseViewModel.swift in Sources */,
 				318FBF6F260E3DB20040658B /* AppCoordinator.swift in Sources */,

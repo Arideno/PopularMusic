@@ -71,6 +71,15 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
         tableView.register(PopularArtistTableViewCell.self, forCellReuseIdentifier: PopularArtistTableViewCell.identifier)
         
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .flatMap { [weak self] (indexPath) -> Observable<Artist> in
+                guard let self = self else { return .empty() }
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                return .just(self.dataSource[indexPath])
+            }
+            .bind(to: viewModel.input.goToArtistInfo)
+            .disposed(by: disposeBag)
     }
     
     private func setupViewModel() {
