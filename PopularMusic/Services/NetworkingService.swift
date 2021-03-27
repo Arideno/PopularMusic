@@ -35,7 +35,7 @@ class NetworkingService {
             .flatMap { (_, data) -> Observable<[Artist]> in
                 guard let topArtists = try? JSONDecoder().decode(PopularArtistsResponse.self, from: data) else { return .just([]) }
                 guard let artists = topArtists.topartists?.artist else { return .just([]) }
-                return .just(artists)
+                return .just(artists.sorted(by: { $0.name?.lowercased() ?? "" < $1.name?.lowercased() ?? "" }))
             }
     }
 }

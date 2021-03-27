@@ -7,14 +7,18 @@
 
 import UIKit
 import CoreData
+import Reachability
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var reachability: Reachability?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        reachability = try? Reachability()
+        try? reachability?.startNotifier()
+        
         return true
     }
 

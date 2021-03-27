@@ -17,6 +17,8 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
     var viewModel: PopularArtistsViewModelType!
     lazy var dataSource = PopularArtistsDataSource()
     
+    let countries = ["Ukraine", "France", "Germany"]
+    
     let tableView: UITableView = {
         let tv = UITableView()
         return tv
@@ -25,6 +27,19 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
     let activityIndicator: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .large)
         return ai
+    }()
+    
+    lazy var countryButtonItem: UIBarButtonItem = {
+        let bbi = UIBarButtonItem()
+        bbi.title = countries.first
+        let actions = countries.map { (country) -> UIAction in
+            return UIAction(title: country, image: nil, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { _ in
+                bbi.title = country
+                self.viewModel.input.selectCountry.accept(country)
+            }
+        }
+        bbi.menu = UIMenu(title: "Select Country", image: nil, identifier: nil, options: .displayInline, children: actions)
+        return bbi
     }()
     
     override func viewDidLoad() {
@@ -49,7 +64,7 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
             make.center.equalToSuperview()
         }
         
-        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = countryButtonItem
     }
     
     private func setupTableView() {
@@ -72,7 +87,14 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
             })
             .disposed(by: disposeBag)
         
-        viewModel.input.requestCells.onNext(())
+        viewModel.output.startLoading
+            .subscribe(onNext: { [weak self] in
+                self?.activityIndicator.isHidden = false
+                self?.activityIndicator.startAnimating()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.input.selectCountry.accept(countries.first)
     }
 }
 

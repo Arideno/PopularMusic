@@ -12,4 +12,5 @@ target 'PopularMusic' do
   pod 'Alamofire'
   pod 'SnapKit'
   pod 'RxDataSources'
+  pod 'RxReachability'
 end
