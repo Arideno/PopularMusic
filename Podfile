@@ -13,4 +13,5 @@ target 'PopularMusic' do
   pod 'SnapKit'
   pod 'RxDataSources'
   pod 'RxReachability'
+  pod 'Kingfisher'
 end

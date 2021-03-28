@@ -20,13 +20,16 @@ class ArtistInfoViewModel: BaseViewModel, ArtistInfoViewModelType {
     
     private let closeSubject = PublishSubject<Void>()
     private let artistRelay = BehaviorRelay<Artist?>(value: nil)
+    private let cellsRelay = BehaviorRelay<[TopAlbumsSection]>(value: [])
+    private let requestCellsSubject = PublishSubject<Void>()
     
     struct Input {
-        
+        var requestCells: AnyObserver<Void>
     }
     
     struct Output {
         var artist: Observable<Artist?>
+        var albums: BehaviorRelay<[TopAlbumsSection]>
     }
     
     struct CoordinatorInput {
@@ -41,12 +44,26 @@ class ArtistInfoViewModel: BaseViewModel, ArtistInfoViewModelType {
     }
     
     private func setupIO() {
-        input = Input()
-        output = Output(artist: artistRelay.asObservable())
+        input = Input(requestCells: requestCellsSubject.asObserver())
+        output = Output(artist: artistRelay.asObservable(), albums: cellsRelay)
         coordinatorInput = CoordinatorInput(close: closeSubject)
     }
     
     private func setupSubjects(artist: Artist) {
         artistRelay.accept(artist)
+        
+        requestCellsSubject
+            .subscribe(onNext: { [weak self] in
+                guard let self = self, let artist = self.artistRelay.value else { return }
+//                self.startLoadingSubject.onNext(())
+                self.cellsRelay.accept([])
+                NetworkingService.default.getTopAlbums(for: artist)
+                    .flatMap { albums -> Observable<[TopAlbumsSection]> in
+                        .just([TopAlbumsSection(items: albums)])
+                    }
+                    .bind(to: self.cellsRelay)
+                    .disposed(by: self.disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 }

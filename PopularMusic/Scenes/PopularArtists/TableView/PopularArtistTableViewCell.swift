@@ -16,6 +16,8 @@ class PopularArtistTableViewCell: UITableViewCell, ReuseIdentifiable {
     let artistImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
+        iv.tintColor = .placeholderText
+        iv.kf.indicatorType = .activity
         return iv
     }()
     
@@ -68,16 +70,11 @@ class PopularArtistTableViewCell: UITableViewCell, ReuseIdentifiable {
     }
     
     func fill(artist: Artist) {
-        if let imageURL = artist.images?.first(where: { $0.size == "medium" })?.url {
-            RxAlamofire.requestData(.get, imageURL)
-                .subscribe(onNext: { [weak self] (response, data) in
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self?.artistImageView.image = image
-                        }
-                    }
-                })
-                .disposed(by: disposeBag)
+        artistImageView.image = nil
+        if let imageURL = URL(string: artist.images?.first(where: { $0.size == "medium" })?.url ?? "") {
+            artistImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.cacheOriginalImage], completionHandler: nil)
+        } else {
+            artistImageView.image = UIImage(systemName: "photo")
         }
         
         nameLabel.text = artist.name
