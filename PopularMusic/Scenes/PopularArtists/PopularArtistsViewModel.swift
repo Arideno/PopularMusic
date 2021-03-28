@@ -8,6 +8,8 @@
 import RxSwift
 import RxRelay
 import RxAlamofire
+import Reachability
+import RxReachability
 
 protocol PopularArtistsViewModelType: class {
     var input: PopularArtistsViewModel.Input! { get }
@@ -92,6 +94,11 @@ class PopularArtistsViewModel: BaseViewModel, PopularArtistsViewModelType {
             })
             .flatMap({ _ -> Observable<Void> in .just(()) })
             .bind(to: requestCellsSubject)
+            .disposed(by: disposeBag)
+        
+        Reachability.rx.isReachable
+            .map({ !$0 })
+            .bind(to: offlineRelay)
             .disposed(by: disposeBag)
     }
 }

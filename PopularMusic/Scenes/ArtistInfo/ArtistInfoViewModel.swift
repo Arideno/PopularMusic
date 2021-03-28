@@ -7,6 +7,8 @@
 
 import RxSwift
 import RxRelay
+import Reachability
+import RxReachability
 
 protocol ArtistInfoViewModelType: class {
     var input: ArtistInfoViewModel.Input! { get }
@@ -78,6 +80,19 @@ class ArtistInfoViewModel: BaseViewModel, ArtistInfoViewModelType {
                         .disposed(by: self.disposeBag)
                 }
             })
+            .disposed(by: disposeBag)
+        
+        offlineRelay
+            .do(onNext: { offline in
+                UserDefaults.standard.set(offline, forKey: "offline")
+            })
+            .flatMap({ _ -> Observable<Void> in .just(()) })
+            .bind(to: requestCellsSubject)
+            .disposed(by: disposeBag)
+        
+        Reachability.rx.isReachable
+            .map({ !$0 })
+            .bind(to: offlineRelay)
             .disposed(by: disposeBag)
     }
 }

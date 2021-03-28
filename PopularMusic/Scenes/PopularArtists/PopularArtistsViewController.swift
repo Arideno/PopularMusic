@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import SnapKit
 import RxDataSources
+import Reachability
+import RxReachability
 
 class PopularArtistsViewController: UIViewController, BaseViewControllerType {
     typealias ViewModel = PopularArtistsViewModelType
@@ -49,8 +51,8 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "Popular Artists"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.mainColor]
         
         setupViews()
         setupTableView()
@@ -117,6 +119,11 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
         
         viewModel.input.offline
             .take(1)
+            .bind(to: offlineSwitch.rx.value)
+            .disposed(by: disposeBag)
+        
+        Reachability.rx.isReachable
+            .map({ !$0 })
             .bind(to: offlineSwitch.rx.value)
             .disposed(by: disposeBag)
         

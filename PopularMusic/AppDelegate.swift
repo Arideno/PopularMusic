@@ -8,6 +8,7 @@
 import UIKit
 import Reachability
 import RxSwift
+import RxReachability
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         appCoordinator = AppCoordinator(window: window!)
         appCoordinator.start().subscribe().disposed(by: disposeBag)
+        
+        Reachability.rx.isReachable
+            .subscribe(onNext: { isReachable in
+                UserDefaults.standard.set(!isReachable, forKey: "offline")
+            })
+            .disposed(by: disposeBag)
         
         return true
     }

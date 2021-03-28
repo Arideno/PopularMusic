@@ -29,6 +29,7 @@ class ArtistInfoViewController: UIViewController, BaseViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.mainColor]
         
         setupViews()
         setupTableView()

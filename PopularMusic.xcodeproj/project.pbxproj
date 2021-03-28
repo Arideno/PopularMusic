@@ -30,6 +30,7 @@
 		319501D22610AB8F00EBA850 /* ArtistObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319501CF2610AB8F00EBA850 /* ArtistObject+CoreDataProperties.swift */; };
 		319501D32610AB8F00EBA850 /* AlbumObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319501D02610AB8F00EBA850 /* AlbumObject+CoreDataProperties.swift */; };
 		319501D42610AB8F00EBA850 /* AlbumObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319501CE2610AB8F00EBA850 /* AlbumObject+CoreDataClass.swift */; };
+		319501D82610B9D300EBA850 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319501D72610B9D300EBA850 /* UIColor+.swift */; };
 		31DBF8D6260E3B5400759B31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8D5260E3B5400759B31 /* AppDelegate.swift */; };
 		31DBF8E0260E3B5400759B31 /* PopularMusic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31DBF8DE260E3B5400759B31 /* PopularMusic.xcdatamodeld */; };
 		31DBF8E2260E3B5900759B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31DBF8E1260E3B5900759B31 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		319501CE2610AB8F00EBA850 /* AlbumObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AlbumObject+CoreDataClass.swift"; path = "/Users/andriimoisol/Documents/PopularMusic/PopularMusic/Models/AlbumObject+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		319501CF2610AB8F00EBA850 /* ArtistObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ArtistObject+CoreDataProperties.swift"; path = "/Users/andriimoisol/Documents/PopularMusic/PopularMusic/Models/ArtistObject+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		319501D02610AB8F00EBA850 /* AlbumObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AlbumObject+CoreDataProperties.swift"; path = "/Users/andriimoisol/Documents/PopularMusic/PopularMusic/Models/AlbumObject+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		319501D72610B9D300EBA850 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		31DBF8D2260E3B5400759B31 /* PopularMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DBF8D5260E3B5400759B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31DBF8DF260E3B5400759B31 /* PopularMusic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PopularMusic.xcdatamodel; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		319501D62610B9CB00EBA850 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				319501D72610B9D300EBA850 /* UIColor+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		31DBF8C9260E3B5400759B31 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +206,7 @@
 		31DBF8D4260E3B5400759B31 /* PopularMusic */ = {
 			isa = PBXGroup;
 			children = (
+				319501D62610B9CB00EBA850 /* Extensions */,
 				3195018B260E7AA700EBA850 /* Services */,
 				3195017B260E749600EBA850 /* Models */,
 				318FBF71260E3E110040658B /* Scenes */,
@@ -354,6 +365,7 @@
 				318FBF78260E3E330040658B /* PopularArtistsViewModel.swift in Sources */,
 				3195019E260F4A5900EBA850 /* ArtistInfoViewController.swift in Sources */,
 				318FBF6C260E3D460040658B /* BaseViewModel.swift in Sources */,
+				319501D82610B9D300EBA850 /* UIColor+.swift in Sources */,
 				318FBF6F260E3DB20040658B /* AppCoordinator.swift in Sources */,
 				3195017D260E749C00EBA850 /* Artist.swift in Sources */,
 			);
