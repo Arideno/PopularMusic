@@ -22,6 +22,8 @@ class ArtistInfoViewModel: BaseViewModel, ArtistInfoViewModelType {
     private let artistRelay = BehaviorRelay<Artist?>(value: nil)
     private let cellsRelay = BehaviorRelay<[TopAlbumsSection]>(value: [])
     private let requestCellsSubject = PublishSubject<Void>()
+    private let startLoadingSubject = PublishSubject<Void>()
+    private var offlineRelay: BehaviorRelay<Bool>!
     
     struct Input {
         var requestCells: AnyObserver<Void>
@@ -30,6 +32,7 @@ class ArtistInfoViewModel: BaseViewModel, ArtistInfoViewModelType {
     struct Output {
         var artist: Observable<Artist?>
         var albums: BehaviorRelay<[TopAlbumsSection]>
+        var startLoading: Observable<Void>
     }
     
     struct CoordinatorInput {
@@ -44,8 +47,10 @@ class ArtistInfoViewModel: BaseViewModel, ArtistInfoViewModelType {
     }
     
     private func setupIO() {
+        let isOffline = UserDefaults.standard.bool(forKey: "offline")
+        offlineRelay = BehaviorRelay<Bool>(value: isOffline)
         input = Input(requestCells: requestCellsSubject.asObserver())
-        output = Output(artist: artistRelay.asObservable(), albums: cellsRelay)
+        output = Output(artist: artistRelay.asObservable(), albums: cellsRelay, startLoading: startLoadingSubject)
         coordinatorInput = CoordinatorInput(close: closeSubject)
     }
     
@@ -55,14 +60,23 @@ class ArtistInfoViewModel: BaseViewModel, ArtistInfoViewModelType {
         requestCellsSubject
             .subscribe(onNext: { [weak self] in
                 guard let self = self, let artist = self.artistRelay.value else { return }
-//                self.startLoadingSubject.onNext(())
+                self.startLoadingSubject.onNext(())
                 self.cellsRelay.accept([])
-                NetworkingService.default.getTopAlbums(for: artist)
-                    .flatMap { albums -> Observable<[TopAlbumsSection]> in
-                        .just([TopAlbumsSection(items: albums)])
-                    }
-                    .bind(to: self.cellsRelay)
-                    .disposed(by: self.disposeBag)
+                if self.offlineRelay.value {
+                    CoreDataService.default.getAllAlbums(for: artist)
+                        .flatMap { albums -> Observable<[TopAlbumsSection]> in
+                            .just([TopAlbumsSection(items: albums)])
+                        }
+                        .bind(to: self.cellsRelay)
+                        .disposed(by: self.disposeBag)
+                } else {
+                    NetworkingService.default.getTopAlbums(for: artist)
+                        .flatMap { albums -> Observable<[TopAlbumsSection]> in
+                            .just([TopAlbumsSection(items: albums)])
+                        }
+                        .bind(to: self.cellsRelay)
+                        .disposed(by: self.disposeBag)
+                }
             })
             .disposed(by: disposeBag)
     }

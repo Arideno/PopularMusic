@@ -24,11 +24,13 @@ class PopularArtistsViewModel: BaseViewModel, PopularArtistsViewModelType {
     private let selectCountrySubject = BehaviorRelay<String?>(value: nil)
     private let startLoadingSubject = PublishSubject<Void>()
     private let goToArtistInfoSubject = PublishSubject<Artist>()
+    private var offlineRelay: BehaviorRelay<Bool>!
     
     struct Input {
         var requestCells: AnyObserver<Void>
         var selectCountry: BehaviorRelay<String?>
         var goToArtistInfo: AnyObserver<Artist>
+        var offline: BehaviorRelay<Bool>
     }
     
     struct Output {
@@ -48,7 +50,9 @@ class PopularArtistsViewModel: BaseViewModel, PopularArtistsViewModelType {
     }
     
     private func setupIO() {
-        input = Input(requestCells: requestCellsSubject.asObserver(), selectCountry: selectCountrySubject, goToArtistInfo: goToArtistInfoSubject.asObserver())
+        let isOffline = UserDefaults.standard.bool(forKey: "offline")
+        offlineRelay = BehaviorRelay<Bool>(value: isOffline)
+        input = Input(requestCells: requestCellsSubject.asObserver(), selectCountry: selectCountrySubject, goToArtistInfo: goToArtistInfoSubject.asObserver(), offline: offlineRelay)
         output = Output(artists: cellsRelay.asObservable(), startLoading: startLoadingSubject)
         coordinatorInput = CoordinatorInput(goToArtistInfo: goToArtistInfoSubject)
     }
@@ -59,16 +63,33 @@ class PopularArtistsViewModel: BaseViewModel, PopularArtistsViewModelType {
                 guard let self = self, let country = self.selectCountrySubject.value else { return }
                 self.startLoadingSubject.onNext(())
                 self.cellsRelay.accept([])
-                NetworkingService.default.getPopularArtists(for: country)
-                    .flatMap { artists -> Observable<[PopularArtistsSection]> in
-                        .just([PopularArtistsSection(items: artists)])
-                    }
-                    .bind(to: self.cellsRelay)
-                    .disposed(by: self.disposeBag)
+                if self.offlineRelay.value {
+                    CoreDataService.default.getAllArtists(for: country)
+                        .flatMap { artists -> Observable<[PopularArtistsSection]> in
+                            .just([PopularArtistsSection(items: artists)])
+                        }
+                        .bind(to: self.cellsRelay)
+                        .disposed(by: self.disposeBag)
+                } else {
+                    NetworkingService.default.getPopularArtists(for: country)
+                        .flatMap { artists -> Observable<[PopularArtistsSection]> in
+                            .just([PopularArtistsSection(items: artists)])
+                        }
+                        .bind(to: self.cellsRelay)
+                        .disposed(by: self.disposeBag)
+                }
             })
             .disposed(by: disposeBag)
         
         selectCountrySubject
+            .flatMap({ _ -> Observable<Void> in .just(()) })
+            .bind(to: requestCellsSubject)
+            .disposed(by: disposeBag)
+        
+        offlineRelay
+            .do(onNext: { offline in
+                UserDefaults.standard.set(offline, forKey: "offline")
+            })
             .flatMap({ _ -> Observable<Void> in .just(()) })
             .bind(to: requestCellsSubject)
             .disposed(by: disposeBag)

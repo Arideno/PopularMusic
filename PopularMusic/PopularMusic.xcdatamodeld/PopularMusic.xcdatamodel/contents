@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AlbumObject" representedClassName="AlbumObject" syncable="YES">
+        <attribute name="imageUrl" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="playcount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArtistObject"/>
+    </entity>
+    <entity name="ArtistObject" representedClassName="ArtistObject" syncable="YES">
+        <attribute name="country" attributeType="String"/>
+        <attribute name="imageUrl" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="numberOfListeners" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="ArtistObject" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="AlbumObject" positionX="-54" positionY="-9" width="128" height="89"/>
+    </elements>
 </model>

@@ -29,6 +29,11 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
         return ai
     }()
     
+    let offlineSwitch: UISwitch = {
+        let s = UISwitch()
+        return s
+    }()
+    
     lazy var countryButtonItem: UIBarButtonItem = {
         let bbi = UIBarButtonItem()
         bbi.title = countries.first
@@ -64,6 +69,9 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
             make.center.equalToSuperview()
         }
         
+        #if DEBUG
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: offlineSwitch)
+        #endif
         navigationItem.rightBarButtonItem = countryButtonItem
     }
     
@@ -88,8 +96,7 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
             .disposed(by: disposeBag)
         
         viewModel.output.artists
-            .filter({ $0.count > 0 })
-            .filter({ $0.first!.items.count > 0 })
+            .skip(1)
             .subscribe(onNext: { [weak self] _ in
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.isHidden = true
@@ -101,6 +108,16 @@ class PopularArtistsViewController: UIViewController, BaseViewControllerType {
                 self?.activityIndicator.isHidden = false
                 self?.activityIndicator.startAnimating()
             })
+            .disposed(by: disposeBag)
+        
+        offlineSwitch.rx.value
+            .skip(1)
+            .bind(to: viewModel.input.offline)
+            .disposed(by: disposeBag)
+        
+        viewModel.input.offline
+            .take(1)
+            .bind(to: offlineSwitch.rx.value)
             .disposed(by: disposeBag)
         
         viewModel.input.selectCountry.accept(countries.first)

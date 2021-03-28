@@ -37,9 +37,14 @@ class ArtistInfoViewController: UIViewController, BaseViewControllerType {
     
     private func setupViews() {
         view.addSubview(tableView)
+        view.addSubview(activityIndicator)
         
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+        
+        activityIndicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
         }
     }
     
@@ -57,6 +62,21 @@ class ArtistInfoViewController: UIViewController, BaseViewControllerType {
         
         viewModel.output.albums
             .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        viewModel.output.albums
+            .skip(1)
+            .subscribe(onNext: { [weak self] _ in
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.output.startLoading
+            .subscribe(onNext: { [weak self] in
+                self?.activityIndicator.isHidden = false
+                self?.activityIndicator.startAnimating()
+            })
             .disposed(by: disposeBag)
         
         viewModel.input.requestCells.onNext(())

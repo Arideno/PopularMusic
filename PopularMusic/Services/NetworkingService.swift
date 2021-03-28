@@ -45,6 +45,9 @@ class NetworkingService {
                 guard let artists = topArtists.topartists?.artist else { return .just([]) }
                 return .just(artists.sorted(by: { $0.name?.lowercased() ?? "" < $1.name?.lowercased() ?? "" }))
             }
+            .do(onNext: { artists in
+                CoreDataService.default.saveArtists(artists, for: country)
+            })
     }
     
     func getTopAlbums(for artist: Artist) -> Observable<[Album]> {
@@ -62,5 +65,8 @@ class NetworkingService {
                 guard let albums = topAlbums.topalbums?.album else { return .just([]) }
                 return .just(albums)
             }
+            .do(onNext: { albums in
+                CoreDataService.default.saveAlbums(albums, artist: artist)
+            })
     }
 }

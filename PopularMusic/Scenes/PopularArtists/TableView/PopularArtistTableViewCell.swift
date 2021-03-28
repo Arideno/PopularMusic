@@ -72,7 +72,11 @@ class PopularArtistTableViewCell: UITableViewCell, ReuseIdentifiable {
     func fill(artist: Artist) {
         artistImageView.image = nil
         if let imageURL = URL(string: artist.images?.first(where: { $0.size == "medium" })?.url ?? "") {
-            artistImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.cacheOriginalImage], completionHandler: nil)
+            if UserDefaults.standard.bool(forKey: "offline") {
+                artistImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.onlyFromCache], completionHandler: nil)
+            } else {
+                artistImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.cacheOriginalImage], completionHandler: nil)
+            }
         } else {
             artistImageView.image = UIImage(systemName: "photo")
         }

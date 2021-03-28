@@ -68,7 +68,11 @@ class TopAlbumTableViewCell: UITableViewCell, ReuseIdentifiable {
     
     func fill(album: Album) {
         if let imageURL = URL(string: album.images?.first(where: { $0.size == "large" })?.url ?? "") {
-            albumImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.cacheOriginalImage], completionHandler: nil)
+            if UserDefaults.standard.bool(forKey: "offline") {
+                albumImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.onlyFromCache], completionHandler: nil)
+            } else {
+                albumImageView.kf.setImage(with: imageURL, placeholder: UIImage(systemName: "photo"), options: [.cacheOriginalImage], completionHandler: nil)
+            }
         } else {
             albumImageView.image = UIImage(systemName: "photo")
         }
